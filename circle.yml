@@ -1,0 +1,8 @@
+dependencies:
+  pre:
+    - wget https://releases.hashicorp.com/terraform/0.7.2/terraform_0.7.2_linux_amd64.zip
+    - unzip terraform_0.7.2_linux_amd64.zip
+
+test:
+  override:
+    - ./terraform fmt -write=false -list=true | wc -l | { read wc; test $wc -eq 0; }
